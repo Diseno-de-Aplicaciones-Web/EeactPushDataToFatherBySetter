@@ -16,8 +16,8 @@ function Hijo ({parentSetter}) {
     useEffect(
         ()=>{
             parentSetter({
-                user,
-                password
+                user: user,
+                password: password
             })
         },
         [user,password]
