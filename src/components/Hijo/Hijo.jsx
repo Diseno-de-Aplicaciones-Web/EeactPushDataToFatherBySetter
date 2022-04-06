@@ -1,19 +1,43 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function Hijo ({setter}) {
+function Hijo ({parentSetter}) {
 
-    const [ datosHijo, setDatosHijo ] = useState("");
+    const [ user, setUser ] = useState("");
+    const [ password, setPassword ] = useState("");
 
-    function changeDatosHandler(ev) {
-        setDatosHijo(ev.target.value)
-        setter(ev.target.value)
+    function changeUserHandler(ev) {
+        setUser(ev.target.value)
     }
+
+    function changePasswordHandler(ev) {
+        setPassword(ev.target.value);
+    }
+
+    useEffect(
+        ()=>{
+            parentSetter({
+                user,
+                password
+            })
+        },
+        [user,password]
+    )
 
     return (
         <>
             <h2>Componente Hijo.</h2>
-            <p>Datos: {datosHijo}</p>
-            <input placeholder="usuario" value={datosHijo} onChange={changeDatosHandler}/>
+            <p>User: {user}</p>
+            <p>Password: {password}</p>
+            <input
+                placeholder="usuario"
+                value={user}
+                onChange={changeUserHandler}
+            />
+            <input
+                placeholder="contraseña"
+                type="password" value={password}
+                onChange={changePasswordHandler}
+            />
         </>
 
     )

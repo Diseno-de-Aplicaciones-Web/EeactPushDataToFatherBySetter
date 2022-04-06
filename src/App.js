@@ -10,8 +10,8 @@ function App() {
     <>
       <h1>Pushing up data</h1>
       <h2>Componente principal.</h2>
-      <p>Datos: {datosPadre}</p>
-      <Hijo setter={setDatosPadre}/>
+      <p>Datos: {JSON.stringify(datosPadre)}</p>
+      <Hijo parentSetter={setDatosPadre}/>
     </>
   );
 }
